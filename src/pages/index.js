@@ -2,16 +2,16 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 
-import "rsuite/dist/styles/rsuite.min.css"
+import "rsuite/dist/styles/rsuite-default.min.css"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Projects from "../components/projects.js"
 import Work from "../components/work.js"
 import About from "../components/about.js"
-import Contact from "../components/contact.js"
 
 class IndexPage extends React.Component {
   render() {
+    console.log(this.props);
     const pageData = this.props.data.cosmicjsPages.metadata
     const peopleData = this.props.data.allCosmicjsPeople.edges
     const serviceData = this.props.data.allCosmicjsServices.edges
@@ -59,7 +59,6 @@ class IndexPage extends React.Component {
           peopleData={peopleData}
           pageData={pageData}
         />
-        <Contact name="contact" contactEmail={pageData.contact_email} />
       </Layout>
     )
   }
@@ -100,7 +99,9 @@ export const query = graphql`
         node {
           title
           metadata {
-            icon
+            icon {
+              url
+            }
             description
             summary
           }
@@ -116,7 +117,6 @@ export const query = graphql`
             image {
               url
             }
-            gallery
             summary
             description
           }
