@@ -1,34 +1,37 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { Navbar, Nav } from "rsuite"
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
+  <Navbar style={{
+    width: '100vw',
+    position: 'fixed',
+  }}>
+    <Navbar.Header>
+      <h1>
+        <Link to="/">
           {siteTitle}
         </Link>
       </h1>
-    </div>
-  </header>
+    </Navbar.Header>
+    <Navbar.Body>
+      <Nav>
+        <Nav.Item componentClass={Link} to="/#work">
+          Work
+        </Nav.Item>
+        <Nav.Item componentClass={Link} to="/#projects">
+          Projects
+        </Nav.Item>
+        <Nav.Item componentClass={Link} to="/#about">
+          About
+        </Nav.Item>
+        <Nav.Item componentClass={Link} to="/#contact">
+          Contact
+        </Nav.Item>
+      </Nav>
+    </Navbar.Body>
+  </Navbar>
 )
 
 Header.propTypes = {
